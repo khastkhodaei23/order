@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>ثبت سفارش</title>
+  <!-- فونت دوران -->
+  <link href="https://fonts.cdnfonts.com/css/doran" rel="stylesheet">
+  <!-- فونت زیرنویسی -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      direction: rtl;
+      background: linear-gradient(to bottom right, #ffffff, #f2f2f2);
+      font-family: 'Doran', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 36px;
+      color: #111;
+      animation: fadeInDown 1.2s ease-in-out;
+      font-family: 'Doran', sans-serif;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 14px;
+      color: #666;
+      font-family: 'Vazirmatn', sans-serif;
+      animation: fadeIn 1.4s ease-in-out;
+    }
+
+    form {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      padding: 40px 30px;
+      width: 320px;
+      margin-top: 20px;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    label {
+      font-size: 14px;
+      color: #333;
+      margin-top: 20px;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #f6f6f6;
+      box-shadow: inset 2px 2px 6px #ddd, inset -2px -2px 6px #fff;
+      font-family: 'Doran', sans-serif;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #222;
+      transform: scale(1.02);
+    }
+
+    .insta-box {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideInUp 1.5s ease;
+    }
+
+    .insta-box a {
+      text-decoration: none;
+      color: #111;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .insta-box img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+
+    .insta-box:hover img {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>ثبت سفارش</h1>
+  <div class="subtitle">لطفا فرم زیر را پر کنید</div>
+
+  <form onsubmit="sendToWhatsApp(event)">
+    <label for="name">نام و نام خانوادگی:</label>
+    <input type="text" id="name" required>
+
+    <label for="subject">موضوع سفارش:</label>
+    <input type="text" id="subject" required>
+
+    <label for="phone">شماره تماس:</label>
+    <input type="text" id="phone" required>
+
+    <button type="submit">ارسال به واتساپ</button>
+  </form>
+
+  <div class="insta-box">
+    <a href="https://www.instagram.com/amir_khastkhodaeiiii" target="_blank">amir_khastkhodaeiiii</a>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+  </div>
+
+  <script>
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const subject = document.getElementById('subject').value;
+      const phone = document.getElementById('phone').value;
+      const message = `سلام، من ${name} هستم.%0Aموضوع سفارش: ${subject}%0Aشماره تماس: ${phone}`;
+      const waUrl = `https://wa.me/989919854341?text=${message}`;
+      window.open(waUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
